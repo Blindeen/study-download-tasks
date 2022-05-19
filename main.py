@@ -41,7 +41,7 @@ try:
         unit = units[i]
         unit_number = unit['Number']
 
-        tasks_url = 'https://dante.iis.p.lodz.pl/api/student/taskbrowser/getTasks?subjectid=25&topicid='+str(unit['TopicID'])
+        tasks_url = 'https://dante.iis.p.lodz.pl/api/student/taskbrowser/getTasks?subjectid=' + subject_id + '&topicid=' + str(unit['TopicID'])
         rq = requests.get(tasks_url, cookies=cookies)
         tasks = rq.json()
         tasks = tasks['Entries']
@@ -53,7 +53,7 @@ try:
 
             if machine_status is not None:
                 taskID = task['TaskID']
-                req = requests.get('https://dante.iis.p.lodz.pl/api/student/reply/getReplyHistory?subjectid=25&taskid=' + str(taskID), cookies=cookies)
+                req = requests.get('https://dante.iis.p.lodz.pl/api/student/reply/getReplyHistory?subjectid=' + subject_id + '&taskid=' + str(taskID), cookies=cookies)
 
                 replies = req.json()
                 replies = replies['Entries']
