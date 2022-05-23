@@ -29,13 +29,14 @@ try:
     cookies = {'hwsid': '', 'hwtoken': ''}
     save_path_src = ''
 
-    rq = requests.get('https://dante.iis.p.lodz.pl/api/student/topicbrowser/getTopics?subjectid=' + subject_id, cookies=cookies)
+    units_url = 'https://dante.iis.p.lodz.pl/api/student/topicbrowser/getTopics?subjectid='
+    rq = requests.get(units_url + subject_id, cookies=cookies)
     units = rq.json()
     units = units['Entries']
 
     for i in range(len(units)):
         print('------Unit%d------' % (i+1))
-        time.sleep(5)
+        time.sleep(10)
         task_number = 1
 
         unit = units[i]
